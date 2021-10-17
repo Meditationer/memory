@@ -1,0 +1,6 @@
+vue
+	var that=this写法的意义，that就是用来存储指向的。this代表父函数，
+	
+jquery
+	var that=this写法的意义，that就是用来存储指向的。this代表父函数，（同）
+	

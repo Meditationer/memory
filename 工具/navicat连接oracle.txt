@@ -1,0 +1,5 @@
+Navicat Premium中oracle有两种连接类型：Basic和TNS。
+	Basic 模式中，通过 OCI 连接 Oracle。也就是工具--》选项--》--》环境-oci环境。
+		然后输入主机名或IP地址、端口及服务名或SID。
+	TNS 模式中需要使用在 tnsnames.ora 文件中的别名项目通过 Oracle Call Interface (OCI) 连接 Oracle 服务
+		连接类型换为tns

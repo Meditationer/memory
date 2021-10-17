@@ -1,0 +1,44 @@
+存储过程是一种数据库对象。一组完成特定功能的SQL语句。
+	过程：接受输入和输出参数，在请求时被执行的程序单元。	插入数据，修改数据
+	函数：它的执行结果会返回一个值，可充当标准的 SQL 语句。	比如随机名字
+		优点：降低网络拥阻，在服务器内部快。不同的架构也能实现共享访问。可以直接修改存储过程来修改业务逻辑而不需要重启服务器
+		
+过程：create procedure sp_name (in|out|inout 参数名 数据类型 , ...)参数[IN| OUT| INOUT]，输入，输出 ，输入输出
+	# 删除已存在存储过程——se()函数
+	drop procedure if exists se //
+	# 声明结束符为//
+	delimiter //	不适用，用navicat会报错
+ 
+	# 创建存储过程
+	create procedure se()
+		begin
+			declare var_name type [default var_value];//声明变量
+			set val_name = 'Centi'; //变量 在begin/end块中有效
+			select val_name;//查询局部变量
+			select salary from employee;
+		end //
+	# 调用函数
+	call se() //
+
+出参in 相当于形参。
+ # 传入参数val_id查询员工返回name值(查询出的name值用出参接收并返回)
+ 6    select name into val_name from employee where id = val_id;
+	
+函数：create function	returns type
+
+	
+call语句
+光标使用
+流程控制：
+	if语句：if 条件 Then 结果 elseif 条件 then 结果  else 结果 end if。
+	case语句：case 条件 when 条件 then 结果
+						when 条件 then 结果
+						else 结果
+						end case
+			或者直接
+				case
+					when 判断真或假 then 结果
+					when 判断真或假 then 结果
+					else 结果
+					end case
+	loop语句，leave语句

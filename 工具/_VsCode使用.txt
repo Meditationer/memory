@@ -1,0 +1,20 @@
+全局		[看插件的更改日志，长时间不更新的没必要用了]
+	ctrl shift p 打开面板
+	
+快捷键：
+	ctrl p 搜索文件
+    切换页面：ctrl pgdn pgup			 选中代码行：shift + 鼠标左键
+    移动行：alt+up/down			 ctrl+home文章首页		多光标：ctrl alt up/down
+    代码格式化：shift + alt +f
+    ctrl g：行跳转				ctrl j 打开和关闭终端
+    ctrl+/单行注释  取消单行注释(按下ctrl+k + u)	 多行注释alt shift a
+
+    ctrl k + ctrl T 调背景颜色
+    查看md文件预览ctrl+shift+v
+
+vs code自动换编码
+	左边设置图标打开设置--然后输入框输入 encodeing---最后勾选auto guess encoding选项重启即可
+
+一些注意事项：
+	开发人员启动性能:面板输入Developer: Startup Performance	--开启慢
+	cpu占用过高：不清楚 https://github.com/wix/import-cost/issues 可以看看相关问题

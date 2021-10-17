@@ -1,0 +1,48 @@
+NVL(Expr1,Expr2)如果Expr1为NULL，返回Expr2的值，否则返回Expr1的值
+tns配置数据库：配置数据库的连接地址，配置好后，连接时无需完整的oracle地址，用字符串代替就行。定义网络服务的
+oracle服务：
+	OracleDBConsoleorcl   (oracle的企业管理器服务)
+	OracleJobSchedulerORCL  (oracle的任务调度服务 定时器)
+	(重要)OracleOraDb11g_home1TNSListener  (oracle的监听器服务 远程访问)
+	(重要)OracleServiceORCL  (oracle的数据库服务)
+dblink：1访问2，操作在1。访问是互相的
+	跨数据库访问数据，通过DBLINK本地数据库可以像访问本地数据库一样访问远程数据库表中的数据。
+sp_addlinkedserver	
+	定义dblink语法：
+			EXEC master.dbo.sp_addlinkedserver
+			@server = '远程IP地址',
+			@srvproduct='DBLINK类型(默认SQL Server)'
+	这个是sql server也就是Microsoft SQL Server，oracle是甲骨文
+dblink：			【表名@数据库链接名】
+		判断权限：select * from database  where privilege like upper('%DATABASE LINK%') AND USERNAME='用户名';
+		创建语句：create database link 数据库链接名 connect to 用户名 identified by 密码 using '服务名/tns那里(database))'
+		删除语句：drop [public] database link 数据库连接名
+		查询语句：select * from 表名@数据库连接名
+		创建dblink的权限：grant create public database link to 用户名;
+			表名+@+dblink 
+远程连接
+	远程连接要tns，包含远程ip地址，服务端口号，服务名。
+	尝试ping：ping ip地址，tnsping 服务名(tns里那个远程的服务名)，tnsping tns里自定义的那个
+中间表，临时表，接口表
+	接口表两个系统共享的实体表。中间表也是为了安全,通过中间数据库的表通信
+	oracle只有临时表概念，需要ddl语句事先定义方能使用。
+		_tmp后缀会话临时表
+				CREATE GLOBAL TEMPORARY ( ) ON COMMIT PRESERVE ROWS； 
+		事务临时表
+				CREATE GLOBAL TEMPORARY ( ) ON COMMIT DELETE ROWS;
+jdbc——odbc：
+	ODBC：数据库访问的标准API，统一的方式处理所有的数据库
+	JDBC：Java与数据库的接口规范。支持标准SQL功能的通用低层API。由Java 语言编写的类和接口组成
+		区别：Java 可以使用 ODBC，但最好是以JDBC-ODBC桥的形式使用。odbc是c语言接口，从Java 调用本地 C代码在安全性、实现、坚固性和程序的自动移植性方面都有许多缺点。
+视图：
+	视图(view)，也称虚表。视图只有逻辑定义。每次使用的时候,只是重新执行SQL。
+	视图从一个或多个实体表中获得，这些表称为基表。他的数据就在基表中，基表变动就变动。数据可能受限，只读视图
+	有实体化视图，是有数据的，占用存储空间。
+		作用：提供符合要求的数据形式，隐藏多表查询的复杂性，进行简单查询
+		
+	create 		[ or replace存在同名，新视图替换老视图] [ force 没有基表也强制执行] 
+	view 		[schema.]
+	view_name   [ (column1,column2,...) 视图列名]	
+	as 
+	select ...  [ with check option ] [ constraint constraint_name所做操作必须符合子表操作判断] [ with read only 只用于查询];
+	

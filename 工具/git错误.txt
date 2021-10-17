@@ -1,0 +1,52 @@
+fatal: unable to access 'https://github.com/Meditationer/bed.git/': schannel:failed to receive handshake, SSL/TLS connection failed
+fatal: unable to access 'https://github.com/Meditationer/bed.git/': OpenSSL SSL_read: Connection was reset, errno 10054
+提示SSL证书。这个错误并不重要是系统证书的问题，跳过就行。
+	git config --global http.sslVerify "false"	解除ssl验证  不在cmd中在git bash中
+	上面没啥用，直接改目录下的.git的config的url = git@github.com:Meditationer/bed.git
+		直接改，github会报错，ssh的第一次连接需要认证ssh的 key，所以用gitbash 拉一次。有问题先gitbash试试
+	
+fatal: unable to access 'https://github.com/Meditationer/bed.git/': Failed to connect to github.com port 443: Timed out
+	git config --global --unset http.proxy  取消代理
+	
+git忽略文件的三种方式：
+git status查看跟踪情况
+	.gitignore比如*.log，或者直接目录名
+		git bash使用 touch .gitignore创建，文件编辑只能是刚git的新文件
+			target          //忽略这个target目录
+			angular.json    //忽略这个angular.json文件
+			log/*           //忽略log下的所有文件
+			css/*.css       //忽略css目录下的.css文件
+	git update-index --assume-unchanged Xml/config.xml 远程不删除，本地也保留，忽略
+		忽略当前目录下的所有文件git update-index --assume-unchanged $(git ls-files | tr '\n' ' ') 【git bash】
+		
+	git rm --cached testFile 这个命令必须取决于已经提交到了暂存区
+		git rm --cached	jfinal/layui_curd/.idea
+		git rm -r --cached .这个是所有本地文件，取消跟踪但不删除
+	
+配置用户名和邮箱：
+	git config --global user.name "lijiang"
+	git config --global user.email "2906718132@qq.com"
+
+根据远程仓库建立本地仓库
+	git clone <repo>
+		可能会报unable to access 'https，然后https 改为 http
+	git clone <repo> <directory> 这个是指定目录
+
+免密,ssh配置
+	生成密钥对
+		$ ssh-keygen -t rsa -C "450538710@qq.com" -b 4096（默认2028位） 按三次回车
+		.ssh文件夹中	pub是公匙
+	远程仓库公钥
+		setting -> SSH and GPG keys -> New SSH key 放pub公匙
+		验证 $ ssh -T git@github.com
+关于软件免密：github mistake是可以使用git授权所以不需要
+	       vs code
+查看配置：
+	git config --list
+
+注意
+	如果没有 -- error: key does not contain a section(部分): list
+	OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 1005
+		gitbash  git config --global http.sslVerify "false"
+	Failed to connect to github.com port 443报错
+		没有指定用户密码导致的问题

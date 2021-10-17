@@ -1,0 +1,36 @@
+两个数据库：源数据库test，同步到目标数据库scott		or replace存在就覆盖
+双向触发器：生命周期是会话
+	oracle对象，包的特性，利用包的变量做标识
+	create or replace package 
+merge语句：单
+	merge into 分表@dblink b using 主表 c on (b.pk=c.pk) 
+	when matched then  update set b.列=c.列,b.列=c.列
+	when not matched then 
+	insert values (c.列,c.列, c.列, c.列,c.列,c.列,c.列, c.列);
+	commit;
+	
+触发器：与表管理的sql语句，表中发出特定的操作语句，触发触发器
+	create or replace trigger 触发器名字 触发时间 触发事件
+	after（before）  insert or update on 表名 for each row（每个数据进行一次操作，不添加只激活一次）
+	begin 
+　　	if inserting then
+		elsif updating then
+		elsif deleting then
+		elsif then 猜的，百度没找到
+		end if;
+	end 
+	
+存储过程：
+	CREATE OR REPLACE PROCEDURE 名字 AS/IS【存储函数中没区别，视图as，游标is】
+	变量 类型
+	begin
+		逻辑
+		exception 异常处理
+	end
+		带参
+			CREATE OR REPLACE PROCEDURE 存储过程名称(param1 in student) AS/IS【in表示传入，out是传出】
+				name student.name%TYPE;
+				age number :=20;//赋值  =：绑定变量
+			BEGIN
+				--业务处理.....
+			end

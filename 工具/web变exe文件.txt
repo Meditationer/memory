@@ -1,0 +1,6 @@
+用nativefier快速生成安装包
+	安装node.js
+	npm install nativefier -g安装全局nativefier，如果运行下面命令没成功就添加到环境变量
+	命令nativefier --name "YouForever" "http://www.zhyong.cn" --zoom '2' （这里的zoom，api上 --zoom <value>）
+	
+使用开发工具打jar包，exe4j工具打包

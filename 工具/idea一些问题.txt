@@ -1,0 +1,23 @@
+Unable to import Maven project See logs for details
+	idea中maven配置的原因
+		File--》Settings --》Build,Execution,Deployment --》buil Tools --》Maven
+				maven home directory, user setting file
+		file--> other setting -->setting for new projects 然后和上面一个步骤
+
+IDEA新建项目卡在下载Resolving dependencies of xxx
+	依次点开file/setting/runner，然后在右边的VM options中输入
+			-DarchetypeCatalog=internal
+			
+idea类前面所有Java类标识变成一个J
+	java文件对应的是Mark as中的Source roots；resource文件对应于Mark as中的Resource roots；以此类推。
+	
+IDEA创建maven 一直loading archetype list
+		Settings---->
+		Build Tools ---->
+		Maven ----> Importing
+		set VM options for importer to -Xmx2048m (默认的是-Xmx768m )
+		
+idea使用Tomcat运行时出现：一个或多个筛选器启动失败解决办法。
+	确定web和web.xml配置正确的情况下。以下操作
+	打开File下面的Project Structure
+		进入artifacts 在右边web-inf下面新建一个lib目录。鼠标右击 +add copy of --》 library files全选确定即可

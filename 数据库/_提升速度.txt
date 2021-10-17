@@ -1,0 +1,2 @@
+将MySQL的1个参数：innodb_flush_log_at_trx_commit，1改为了0（修改方法，可以直接修改my.ini(windows)/my.cnf(linux)中的对应参数
+	但这样就要承担数据库Crash后，1秒内未存储到数据库数据丢失可能的风险

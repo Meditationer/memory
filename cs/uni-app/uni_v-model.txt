@@ -1,0 +1,4 @@
+如：
+	<input v-model="test">（数据是实时的）
+	本质上是<input :value="test" @input="test = $event.target.value">
+		@input是对<input>输入事件的一个监听:value="test"是将监听事件中的数据放入到input

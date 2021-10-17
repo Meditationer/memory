@@ -1,0 +1,8 @@
+用途：
+	spring在组件和装配过程中需要大量配置，boot是习惯优于配置，实现自动配置spring，简化开发。
+嵌入了tomcat，无需部署war文件
+
+概念：
+	发自spring基础，简化spring应用初始搭建。
+格式：
+	看官网的learn->overview概述。再到->quickstart

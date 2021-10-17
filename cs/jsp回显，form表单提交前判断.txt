@@ -1,0 +1,22 @@
+form表单提交前判断：
+	<form class="wise" action="<c:url value="/getMater"/>" method="get" onsubmit="return x();">
+	function x() {
+        var cont=document.getElementById("required");
+        if (cont.value =="0" || cont.value =="") {
+            alert("库存组织是必选项，请选择")
+            return false;
+        }
+        return true;
+    }
+	
+select回显：
+ <select class="form-control" id="required" name="organization" value="${organization}">
+    <option value ="0" <c:if test="${'0' eq organization}">selected</c:if>>请选择</option>
+    <option value="水电" <c:if test="${'水电' eq organization}">selected</c:if>>水电</option>
+    <option value="核电" <c:if test="${'核电' eq organization}">selected</c:if>>核电</option>
+</select>
+
+其它：
+req.getRequestDispatcher("index.jsp").forward(req,resp);//请求转发
+
+映射可以用hibernate  或者	mybatis

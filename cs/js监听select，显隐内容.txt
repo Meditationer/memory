@@ -1,0 +1,16 @@
+ $(() => {
+ //oninput是在值改变时立即触发，而onchange是在值改变后失去焦点才触发
+ //cont 选择器的div的id
+        $('#cont select').change(() => {
+            var val = $('#cont select').val();
+ //选择的内容判断
+            if (val == 2){
+                $("#hidden_qy").css('display','inline');
+                $("#qi_ye").val("1");
+            }else {
+//hidden_qy 内容的div,更改css样式
+                $("#hidden_qy").css('display','none');
+                $("#qi_ye").val("0");
+            }
+        });
+    });

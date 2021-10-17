@@ -1,0 +1,114 @@
+create or replace package body cux_sync_user_info_pkg is
+  -- Author  : JIANGYAN
+  -- Created : 2021/6/10
+  -- Purpose : ERP导入MES信息
+  PROCEDURE Log(p_Text IN VARCHAR2) IS
+  BEGIN
+    Fnd_File.Put_Line(Fnd_File.Log, p_Text);
+  END Log;
+  
+  PROCEDURE Sync_User_Info_To_Mes IS
+  BEGIN
+    --创建临时表，把新增数据和更新数据都插入临时表中
+    execute immediate 'drop table tmp';
+    execute immediate 'create global temporary table tmp(
+        emp_erp_id number,      --人员ID
+        emp_code varchar2(80),  --工号
+        emp_name varchar2(80),  --姓名
+        user_name varchar2(80), --用户名
+        create_date date,   --创建时间
+        data_type integer,  --数据类型 0:(C,新增) 1:(U, 更新) 2:(D, 失效)
+        deal_date date,     --处理日期
+        re_source integer,   --数据来源 0:(MES, MES) 1:(EBS, EBS)
+        status integer      --处理状态 0:(N, 初始状态) 1:(S, 成功) 2:(E, 处理失败)
+    )
+    on commit delete rows';
+    
+    --获取新增的数据
+    insert into tmp
+    select p.person_id
+        , p.PREVIOUS_LAST_NAME
+        , p.FULL_NAME
+        , u.USER_NAME
+        , p.CREATION_DATE
+        , 0
+        , sysdate
+        , 1
+        , 0
+    from PER_PEOPLE_F p left join
+        fnd_user u
+    on p.person_id = u.employee_id    
+    where SYSDATE between p.EFFECTIVE_START_DATE and p.EFFECTIVE_END_DATE
+        and not exists(
+            select emp_erp_id
+            from zfmes.INF_RES_EMP@mestest emp
+            where emp.emp_erp_id = p.person_id
+        );
+    
+    --获取更新的数据    
+    insert into tmp
+    select p.person_id
+        , p.PREVIOUS_LAST_NAME
+        , p.FULL_NAME
+        , u.USER_NAME
+        , p.CREATION_DATE
+        , 1
+        , sysdate
+        , 1
+        , 0
+    from PER_PEOPLE_F p left join
+        fnd_user u on p.person_id = u.employee_id inner join 
+        (select emp.EMP_ERP_ID
+                ,emp.DEAL_DATE
+                ,emp.ID
+                ,emp.CREATE_DATE
+                ,emp.data_type
+                ,emp.emp_code
+                ,emp.emp_name
+                ,emp.error_count
+                ,emp.error_message
+                ,emp.organization_code
+                ,emp.source
+                ,emp.status
+                ,emp.user_name
+                ,emp.erp_id
+            from (select EMP_ERP_ID, max(deal_date) deal_date from zfmes.INF_RES_EMP@mestest emp
+                    where EMP_ERP_ID <> 62
+                    group by EMP_ERP_ID) t left join zfmes.INF_RES_EMP@mestest emp
+            on t.emp_erp_id = emp.emp_erp_id and t.deal_date = emp.deal_date) mes on p.person_id = mes.emp_erp_id 
+        and (nvl(p.previous_last_name, 'a') <> nvl(mes.emp_code, 'a') or
+            nvl(p.full_name, 'a') <> nvl(mes.emp_name, 'a') or
+            nvl(u.user_name, 'a') <> nvl(mes.user_name, 'a'))
+    where SYSDATE between p.EFFECTIVE_START_DATE and p.EFFECTIVE_END_DATE
+        and p.person_id <> 62;
+            
+    insert into zfmes.INF_RES_EMP@mestest(
+        id,
+        emp_erp_id,
+        erp_id,
+        emp_code,
+        emp_name,
+        user_name,
+        create_date,
+        data_type,
+        deal_date,
+        source,
+        status,
+        error_count)
+    select zfmes.SEQ_INF_RES_EMP_ID.NEXTVAL@mestest
+        ,emp_erp_id
+        ,emp_erp_id
+        ,emp_code
+        ,emp_name
+        ,user_name
+        ,create_date
+        ,data_type
+        ,deal_date
+        ,re_source
+        ,status
+        ,0
+    from tmp;
+    commit;
+  END Sync_User_Info_To_Mes;
+  
+end cux_sync_user_info_pkg;

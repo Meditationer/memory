@@ -1,0 +1,9 @@
+查看vs版本， .net core版本（cmd    dotnet --info的host的version）
+
+
+1.  iis express运行的URL一致	launchsettings.json的iisSettings的iisExpress中的applicationUrl和profiles中的applicationUrl一致
+2.  关闭项目和vs，删除解决方案根目录下面的隐藏文件 .vs 文件夹
+3.  管理员身份运行vs2019并运行项目
+5.  删除Docement/IIS Express文件夹里面的全部内容
+6.  重启电脑，重新打开项目
+7.  防火墙的开闭

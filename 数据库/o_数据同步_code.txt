@@ -1,0 +1,23 @@
+单向： 备份
+create or replace trigger synch after insert or update on mtl_system_items_b for each row
+begin
+	merge into item_inf@meslink a using mtl_system_items_b b on (a.Item_Code=b.Item_Code) 
+	when matched then  update set a.列=b.列,a.列=b.列
+	when not matched then 
+	insert values (b.列,b.列, b.列, b.列,b.列,b.列,b.列, b.列);
+	commit;
+end;
+
+new表示新记录，old表示老记录。FOR EACH ROW关键字必须存在
+二：
+修改：update (select * from mtl_system_items_b where Item_Code= :new.Item_Code) b b.CREATE_DATE = sysdate,b.DATA_TYPE ='',b.STATUS='0' 不行
+	不能在同一个sql语句中，先select同一个表的某些值，然后再update这个表。
+	REPLACE(`name`,'嘻嘻','芜湖'),对于数据库中值(null) 既不表示 null，也不表示""，不知道。
+
+	insert into item_inf@meslink select * from surface 这个是一次性复制，再辅助主键id会报错
+
+包：
+	CREATE OR REPLACE PACKAGE cux_sync_ebs_mes_pkg is
+		PROCEDURE Log(p_Text IN VARCHAR2);  
+		PROCEDURE Sync_ebs_mtl_To_Mes;
+	END cux_sync_ebs_mes_pkg;

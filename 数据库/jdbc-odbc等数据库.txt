@@ -1,0 +1,35 @@
+JDBC:	api，java十三规范之一，提供访问数据库。odbc的改进型吧，用于数据库连接，数据库驱动
+ODBC：	放数据库连接，microsoft数据库访问接口标准。几乎连接所有数据库，因为是c写的所以，java使用最好用jdbc-odbc桥接一下
+orm（对象关系映射框架）和jdbc本质上都是同一个功能操作数据库，orm底层也是jdbc的。
+
+对于驱动器com.mysql.cj.jdbc.Driver这个是调用
+mysql-connector-java是MySQL提供的JDBC驱动包。建立连接，发送sql。操作具体的数据库的
+jpa底层也是jdbc。更注重java代码。也就是建立实体类和数据库表的关系。纯的jpa统一接口标准。orm是应用程序和jdbc api的中间层。及操作jdbc的。两个都要
+
+获取资源和释放资源非常消耗系统资源。所以采用连接池技术提高性能，来共享连接Connection。Commons-dbcp.jar：连接池的实现 Commons-pool.jar：连接池实现的依赖库
+
+1、oracle：
+  driver="oracle.jdbc.driver.OracleDriver"
+
+  url="jdbc:oracle:thin:@localhost:1521:数据库名"/
+
+2、sqlserver 2000：
+
+  driver="com.microsoft.jdbc.sqlserver.SQLServerDriver"
+  url="jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=数据库名"
+3、sqlserver 2005：
+  driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+
+  url="jdbc:sqlserver://localhost:1433;DatabaseName=数据库名"/
+
+4、mysql:  
+
+ driver="com.mysql.jdbc.Driver"    (过时)  ，driver="com.mysql.cj.jdbc.Driver"
+
+ url="jdbc:mysql://localhost/数据库名?[后接参数]" 
+
+5、db2:  
+
+driver="com.ibm.db2.jdbc.app.DB2Driver"  
+
+url="jdbc:db2://localhost:5000/数据库名"sybase:  driver="com.sybase.jdbc.SybDriver"  

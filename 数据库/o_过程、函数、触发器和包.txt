@@ -1,0 +1,20 @@
+包：包规范和包体
+包定义：
+	CREATE [OR REPLACE] PACKAGE package_name
+		{IS | AS}
+		[公有数据类型定义]
+		[公有游标声明]
+		[公有变量、常量声明]
+		[公有子程序声明]
+	END   [package_name];
+包体：
+	CREATE [OR REPLACE] PACKAGE BODY package_name
+		{IS | AS}
+		[私有数据类型定义]
+		[私有变量、常量声明]
+		[公有子程序定义]...
+	BEGIN
+		执行部分(初始化部分)
+	END [package_name];
+包的名称和包体的名称要保持一致,定义一定要先编译，包体可以没有	
+	

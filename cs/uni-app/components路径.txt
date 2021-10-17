@@ -1,0 +1,1 @@
+在components下的组件，图片路径用 /static/img/back.png  这样的根路径形式，

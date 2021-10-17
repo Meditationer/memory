@@ -1,0 +1,50 @@
+			浏览器内核可以分成：渲染引擎和JS引擎。
+	 渲染引擎对网页语法的解释（如HTML、JavaScript）并渲染网页。一般指排版引擎
+	 JS引擎一个专门处理JavaScript脚本的虚拟机
+js-css/heml 框架或者库：
+库只管引进来使用，而框架有着各种各样的严格约束。
+
+		jquery		是js的库
+		yui			是js的库
+		bootstrap	属于HTML和CSS框架。（约束了DOM结构）。web端
+		weui		UI 库，移动端
+		vue			是一个 JavaScript 框架
+		react		是一个 JavaScript 框架		（常用）
+		angularjs	是一个 JavaScript 框架
+		Gumby		CSS框架
+		SASS		CSS框架
+
+H5+原生混合开发(混合应用,Hybrid APP,web+app)
+	基于h5技术，本质上是js引擎渲染（h5是移动网页自身）
+		Cordova、Ionic、微信小程序【框架：chameleon、Taro、uni-app、mpvue、WePY】
+	webview交互【JsBridge】
+		代码是运行在WebView[实质是一个浏览器内核]，其JavaScript运行在权限受限的沙箱中,由框架在
+	原生代码中实现访问系统api暴露给webview中由js负责调用。
+	
+	
+JavaScript开发+原生渲染的跨平台
+	非H5端的js是运行在一个独立的js core或v8下【作用类似JsBridge】
+		weex		
+			支持Vue语法和Rax语法。不适用于小程序，
+			
+		react native（RN）
+			基于react。React会在DOM的基础上建立一个抽象层，即虚拟DOM树
+			RN 中虚拟DOM会通过 JavaScriptCore 映射为原生控件树。）
+			只支持JSX语法
+			
+		Taro
+			（六端开发）
+			业务逻辑中根据环境变量使用条件编译
+			
+		h5+ app	
+			（六端开发，Vue.js 开发）
+			传统h5 app调通过h5+ runtime调用原生接口达到效果的app
+			想组件全端通用，必须是基于vue且无dom操作的库、组件
+	
+纯正的的多端开发（自带渲染引擎）
+	flutter（c++）。使用skia作为渲染引擎，渲染程度更好（更看重性能和跨平台的兼容）
+			flutter的学习成本主要在Dart。DSL（QML/Dart）
+	QT mobile
+
+node.js 就是运行在服务端的 JavaScript
+		Express 	 node.js Web应用框架

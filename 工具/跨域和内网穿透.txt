@@ -1,0 +1,48 @@
+​在 HTML 中<a>, <form>,<script>, <iframe>, <link> 等标签以及 Ajax 都可指向一个资源地址
+跨域请求是：当前发起请求的域与该请求指向的资源所在的域不一样。
+		域：我们认为若协议 + 域名 + 端口号均相同，那么就是同域。
+			url：协议+主机[域名/ip地址]+端口[不写默认80]+路径{网络资源在服务器中的指定路径}
+	比如：aaa.cn访问aaa.cn下的资源是同域，访问别的url就是跨域。就会由于安全问题，受到同源策略影响。
+jsonp：回调函数和数据。理念是预定好一个函数名，服务器收到请求，将数据作为参数传递
+	<script type="text/javascript" src="url?预定好的函数名=回调函数">
+	function 回调函数(jsondata){
+        //处理获得的json数据
+    }
+	如果成功加载。回调函数就会执行js。
+	比如jquery的jsonp：
+		$.ajax({
+            type:"GET",
+            url:"http://www.deardull.com:9090/getMySeat", //访问的链接
+            dataType:"jsonp",  //数据格式设置为jsonp
+            jsonp:"callback",  //Jquery生成验证参数的名称
+            success:function(data){  //成功的回调函数
+                aler	t(data);
+            },
+            error: function (e) {
+                alert("error");
+            }
+        });
+	后端： Gson gson=new Gson();return callback+"("+gson.toJson(map)+")";//字符串转成  json 形式
+
+跨域资源共享（CORS）：
+	新的 W3C 标准，一组HTTP首部字段,基于HTTP 头的机制
+	cors简单请求：请求不会触发cors预检请求，get，post，head
+		服务器相应头，比如java的resp.setHeader("Access-Control-Allow-Origin", "*");*也可换成单个网址
+	预检请求：PUT，DELETE等。预检请求会发身份验证，服务器就不能向上面一样，设置为域名
+		resp.setHeader("Access-Control-Allow-Origin", "https://www.aliwork.com");//前台发送的是预检查请求
+        resp.setHeader("Access-Control-Allow-Credentials", "true");//允许前端带认证cookie
+        resp.setHeader("Access-Control-Allow-Headers", "Content-Type,X-Requested-With");;
+		前端代码想要跨域请求携带cookies：加上axios.defaults.withCredentials = true
+	
+document.domain解决无法读取非同源网页的 Cookie问题
+	浏览器是通过document.domain属性来检查两个页面是否同源，因此只要通过设置相同的document.domain，两个页面就可以共享Cookie.主域相同，子域不同。比如www这个地方
+	
+内网穿透：
+	某一个特定源 IP 地址和源端口号的数据包不被 NAT 设备屏蔽而正确路由到内网主机。
+		NAT 是一种将私有（保留）地址转化为合法IP地址的转换技术
+	通过内网穿透公有ip可以访问私有ip，或者私有IP相互访问。也就是ip映射。
+	
+外网访问内网web，ftp等：
+	虚拟服务器端口映射：路由器->应用管理->虚拟服务器->点击添加按钮->外部端口号、内部端口号，服务器的IP地址等
+	
+	

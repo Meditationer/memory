@@ -1,0 +1,49 @@
+说明/功能：
+	WebService是web服务，后指基于xml的rpc协议[远程过程调用协议]，他是跨编程语言和跨操作系统平台的远程调用技术。http+XML
+	webservice是部署在Web服务器上，向外暴露一个通过Web进行调用的API。
+区别：
+	REST:一种设计风格。URL定位资源[资源表现形式有xml，json，html]，用HTTP动词（GET,POST,DELETE,DETC）描述操作。get/post...
+	RESTful:形容rest风格的api
+结构/组成
+	三大技术：
+	XML：封装数据
+	SOAP：SOAP协议规定HTTP消息头和XML内容格式,对象访问协议
+	WSDL：Web服务描述语言，用于描述WebService及其方法、参数和返回值。存在服务器，url获取。随着发布成功自动实现
+		java webservice三大规范
+			JAX-WS：是JAX-RPC的演进版本，调用Java的Web服务
+			JAXM&SAAJ 与JAX-WS 都是基于SOAP 的Web 服务，相比之下JAXM&SAAJ 暴漏了SOAP更多的底层细节
+使用：
+	编写发布webservice：
+	编写接口
+		@WebService
+		public interface IWeather {
+			@WebMethod
+			public String getWeatherByCity();
+		}
+	实现服务：
+		@WebService(serviceName="PhoneManager",服务名targetNamespace="http://dd.ws.it.cn"命名空间 ，默认包名取反) 
+		public class Weather implements IWeather{//protected、private、final、static不发布，@WebMethod(exclude=true)注解排除
+	发布服务：
+		Endpoint.publish("http://localhost:8085/Collection/Main", new Weather());
+	调用WebService服务：
+	1：	http-get方式访问webservice，通过get url连接
+	2：	Http-Client 框架POST请求
+	3：	wsimport让Java生成本地代理，通过代理访问webservice
+		wsimport [opations] <wsdl_uri>	d ：输出的文件的位置，s ：解析java的源码，p ： 指定输出的包名
+		列如：wsimport -s . http://127.0.0.1:12345/weather?wsdl [. 指的是当前路劲]
+			打成jar包，调用jar包[可能出问题，直接.java文件使用]
+		new WeatherInterfaceImplService().getPort(WeatherInterfaceImpl.class); .queryWeather("北京");查询name属性
+其它：
+	uddi 是一种目录服务，企业可以动态查找并使用Web服务
+		服务端：实现接口的webservice
+			@WebService
+			public interface JobService {
+			@WebService(endpointInterface="cn.it.ws.e.JobService")//设置服务端点接口 ，指定对外提供服务的接口
+			public class JobServiceImpl implements JobService {
+		客户端：接口调用，发布
+	CXF框架：开源的 Services 框架
+		导入包，
+		@WebService(serviceName="languageManager")
+		public interface LanguageService {
+			发布服务的两个类：ServerFactoryBean不支持注解，也可以发布，不支持拦截器JaxWsServerFactoryBean支持注解拦截器
+			

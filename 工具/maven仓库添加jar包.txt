@@ -1,0 +1,25 @@
+‪获取绝对路劲[文件右击--属性--安全],D:\Program Files\Maven_repository\sqljdbc4.jar
+
+-DgroupId：跟依赖标签的groupId所对应
+-DartifactId：跟依赖标签的artifactId所对应
+-Dversion：版本号 跟依赖标签的version所对应
+
+不能有空格，用引号引起来也没用
+
+maven目录：
+mvn install:install-file -Dfile=D:\ProgramData\sqljdbc4.jar -DgroupId=com.microsoft.sqlserver -DartifactId=sqljdbc42 -Dversion=4.2 -Dpackaging=jar
+
+
+mvn install:install-file -Dfile=D:\Program Files\Maven_repository\sqljdbc42-6.0.8112.jar  -DgroupId=com.microsoft.sqlserver -DartifactId=sqljdbc42 -Dversion=6.0.8112 -Dpackaging=jar
+
+D:\Program Files\sqljdbc42-6.0.8112.jar
+
+mvn install:install-file -Dfile="D:\Program Files\sqljdbc42-6.0.8112.jar"  -DgroupId=com.microsoft.sqlserver -DartifactId=sqljdbc42 -Dversion=6.0.8112 -Dpackaging=jar
+
+
+maven工程：
+坐标元素：groupId、artifactId、version、packaging、classfier。	
+Group Id 和 Artifact Id统称为坐标。如果项目打成jar包使用。是标识jar和其它资源
+groupId 项目名称或者其它，比如：org.apache
+ArtifactID： 项目的跟目录实际名称
+version ：构建的版本

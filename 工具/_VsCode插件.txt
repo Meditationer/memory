@@ -1,0 +1,27 @@
+vs code 属性 快捷方式的目标栏加这个（每次重装）
+启动位置 和 插件位置
+"D:\Program Files (x86)\Microsoft VS Code\Code.exe" --extensions-dir E:\_pragmatic\_plug\VscodePlugin\extensions
+
+		语言改中文
+chinese
+ms-ceintl.vscode-language-pack-zh-hans-1.51.2 
+
+		图标
+vscode-icons
+vscode-icons-team.vscode-icons-11.0.0
+
+		md插件
+Markdown all in one
+yzhang.markdown-all-in-one-3.4.0
+		运行
+Code Runner
+formulahendry.code-runner-0.11.1
+		代码格式化
+Prettier - Code formatter
+esbenp.prettier-vscode-5.8.0
+		前端实时调试（界面预览）
+Live Server
+找不到
+		git版本
+GitLens
+eamodio.gitlens-11.0.4

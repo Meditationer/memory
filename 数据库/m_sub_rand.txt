@@ -1,0 +1,12 @@
+SUBSTR(str,pos,len)
+	用法：
+SELECT SUBSTR('123456789',1,2) 结果12，角标从1开始，包含
+SELECT SUBSTR('123456789',7) 789
+
+随机数：
+SELECT FLOOR(1 + RAND()*62 ) 
+当中RAND()是0到1
+
+concat(return_str,substring("当前字符串" , FLOOR(1 + RAND()*62 ),1));
+表明：当前字符串在1-62之间的任何一个字符
+	超过角标找不到会是空字符串

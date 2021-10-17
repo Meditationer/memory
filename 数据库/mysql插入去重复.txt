@@ -1,0 +1,7 @@
+如果主键已存在（重复），那么就执行update之后的语句。
+insert into 表名 values() on duplicate key update key=key+1
+
+INSERT INTO mRowUpdate(id,`value`) VALUES(3, 'SuperMan') ON DUPLICATE KEY UPDATE `value`='SuperMan';
+								            UPDATE buyer_id=buyer_id+1,buyer_sex='无'
+
+取消外键约束:  SET FOREIGN_KEY_CHECKS=0; 

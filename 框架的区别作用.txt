@@ -1,0 +1,35 @@
+概念：
+ORM框架：框架采用元数据描述对象与关系映射的细节，元数据一般是xml格式。EF,Hibernate,MyBatis,JFinal
+
+	java  学习路线;Spring Boot，Spring Cloud，Spring Cloud Data Flow
+SpringMVC：MVC轻量级Web框架。构建于 Servlet API 之上，使用的是同步阻塞式 I/O 模型。一个请求一个线程
+	webflux:响应式编程,以 Reactor 库为基础, 基于异步和事件驱动,适合应用在 IO 密集型的服务中，比如微服务网关
+Spring：相当于一个引擎，基于ioc和aop衍生了许多产品
+Spring Boot：基于Spring4的条件注册的快速开发整合包。只是承载者，如果搞web等同于spring mvc+servlet容器(tomcat)。也可以搞springclud
+		相当于各个功能的驱动
+Spring Cloud ：是一系列框架的有序集合，是目前最火热的微服务框架首选，
+ssm：Spring 、Spring MVC、Mybatis(持久层)
+ssh：Struct+Spring+Hibernate
+
+Mybatis：持普通 SQL查询，存储过程和高级映射的优秀持久层框架。
+Hibernate：开放源代码的对象关系映射框架，它对 JDBC 进行了非常轻量级的对象封装
+freemarker ： 前端模板
+Dubbo：分布式服务框架，致力于提供高性能和透明化的RPC（远程过程调用协议）远程服务调用方案，以及SOA服务治理方案。
+RabbitMQ：是用Erlang实现的一个高并发高可靠AMQP消息队列服务器
+Redis：key-value存储系统。支持存储的value类型更多，Redis可以将数据复制到任意数量的从服务器。
+Ehcache：纯Java的进程内缓存框架，广泛使用的开源Java分布式缓存。主要面向通用缓存,Java EE和轻量级容器。它具有内存和磁盘存储，缓存加载器,缓存扩展，缓存异常处理程序
+Log4j：日志记录
+Netty：高性能网络应用框架
+jQuery：快速、简洁的 JavaScript 框架，它封装 JavaScript 常用的功能代码
+	.net
+Modelfirst:EF开发模式之一,推荐codeFirst。打开设计器添加实体和属性，映射生成数据库
+.NET Standard:一套正式的 .NET API 规范，实现BCL的规范
+.NET Framework:类库 + 运行时（CLR）。core的子集win系统
+.NET Core：跨平台，是一个开源的模块化的Framework
+Wpf：基于Windows 的用户界面框架，属于.NET Framework 3.0的一部分。它提供了统一的编程模型、语言和框架，
+ODAC：.net链接oracle数据库
+vs代码段：快捷键,快速补全代码。工具->代码段管理器
+	
+	其它
+SNest：赛意制造运营产品平台 为企业提供一个数字化、智能化的产品技术平台,实现组件化、可扩展、可配置的快速应用开发。
+UML：统一建模语言，为面向对象系统的产品进行说明、可视化和编制文档的一种标准语言	

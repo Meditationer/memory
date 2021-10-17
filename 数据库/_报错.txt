@@ -1,0 +1,17 @@
+MySQL 1303 Can 't create a PROCEDURE from within another stored routine.
+	通过工具来创建的时候，不需要：CREATE PROCEDURE addData() 
+	
+MySQL 错误1418	
+	binlog启用时，创建的函数没有声明类型，指定我们的函数是否是哪种类型： 
+		DETERMINISTIC 不确定的 
+	CREATE DEFINER=`root`@`localhost` FUNCTION `randStr`(`n` int) RETURNS varchar(32) CHARSET utf8mb4
+		DETERMINISTIC
+	BEGIN
+	DECLARE chars_str varchar(100) DEFAULT '张王李赵钱徽音膺彦誉定干企禋雍安民治国吉祥安康兴旺发达'; 
+	
+MysqL1366 
+	5以上的版本如果是空值应该要写NULL，一般在mysql 5.x
+		my.ini中查找sql-mode，  
+		默认为sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"，  
+		将其修改为sql-mode="NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"，重启mysql后即可
+			算了，也不会用5.0版本，mysql版本跟新下

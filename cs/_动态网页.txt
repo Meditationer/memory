@@ -1,0 +1,17 @@
+动态网页：数据在数据库中，服务器上有个解释引擎，会把动态页面翻译成静态页面，速度慢
+	要靠服务器解析才能返回html页面
+静态网页：数据就储存在HTML中
+	动态页面静态化，根据模板，使用replaceAll替换。
+伪静态网页：“假”静态页面，实质上是动态页面。一般是伪静态页面。
+	防止某些黑客恶意攻击，统一把拓展名换为html
+
+java web的 view = 模板+数据+frreemarker  比如，JSP[动态生成web技术标准]、Freemarker,或者Velocity【模板引擎】
+        jsp：Tomcat访问任何的资源都是在访问Servlet，JSP本身就是一种Servlet。就是封装了servlet的java程序
+	执行原理：客户端通过http传输请求，web服务器接收发给servlet，servlet接收请求并处理
+		tomcat服务器识别*.jsp请求，并处理，如serlet-name和servlet-mapping
+
+URLRewrite实现URL地址伪静态化
+
+;return false;
+
+

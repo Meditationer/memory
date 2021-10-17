@@ -1,0 +1,18 @@
+Java web开发时看不到main(),因为tomcat就是一个java程序，有main()它主要加载tomcat自己的配置和你web.xml里面配置的内容
+
+三大组件：Servlet,Filter,Listener。
+	
+应用：
+	当启动一个WEB项目时，容器首先会读取项目web.xml配置文件里的配置。
+	servletcontext(Application)对象。<context-param>name为键，value为值，键值对存入ServletContext。
+		<context-param>中设置数据库的连接方式（驱动、url、user、password）
+	<listener></listener>中的类实例，据配置的class类路径<listener-class>来创建监听
+	<filter></filter>来实例化过滤器
+		web容器可以配置：监听器，过滤器，Servlet，相关参数，会话超时时间，安全验证方式等。框架集成
+		
+小明打开浏览器，输入6.zskpzy.com敲回车键。到具体页面展现。
+	1.浏览器对用户输入的网址做初步的格式化检查。自动补齐什么的，查自身缓存有没有这个数据
+	2.对DNS(域名系统)得到ip地址。先DNS Cache，本地hosts文件。再去dns服务器。
+	3.UDP(用户数据包协议)，和应用打交道.发送给指定程序。
+	4.IP 数据包发送给指定电脑。arp（地址解析协议）根据IP地址获取物理地址(mac地址局域网类似身份证)。
+	5.建立tcp连接，然后就是三次握手啥的

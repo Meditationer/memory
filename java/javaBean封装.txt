@@ -1,0 +1,17 @@
+JavaBean是Java开发的一个可重用的组件，使用JavaBean减少重复代码，使整个代码的开发更简洁。
+
+反射封装JavaBean：反射更改对象域来封装JavaBean，通过getDeclaredField获得对应域，并用set修改。
+	class.class.newInstance();获取对象
+	clazz.getDeclaredField();属性成员，所有。然后
+内省封装javaBean：
+	
+	
+反射：创建对象分两步，载入并且实例化。
+	new是直接两部了。
+	getinstance是有了instance是获取。懒汉式用的时候调用
+	newinstance是用构造方法创建一个对象。饿汉式用的时候创建
+			Class.forName("com.xb.test.Student");内部调用了getClassLoader()方法。静态代码块
+			classLoader.loadClass();遵循双亲委派模型最终调用启动类加载器的类加载器，
+				实现的功能是“通过一个类的全限定名来获取描述此类的二进制字节流”，获取到二进制流后放到JVM中。
+			延迟加载class.class
+			getClass是需要一个对象的引用来调用此方法。

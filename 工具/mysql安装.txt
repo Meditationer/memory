@@ -1,0 +1,49 @@
+下载免安装的mysql文件，
+	添加my.ini文件，data文件夹不要添加
+	cd到安装目录bin下，用管理员。
+	初始化	mysqld --initialize-insecure 复制密码
+	创建服务 mysqld --install
+	启动服务 net start mysql
+	登入	mysql -uroot -p密码
+	修改密码	alter user user() identified by "123456";
+	
+	登入 mysql -u root -p
+		输入密码123456
+	退出 exit；
+查看mysql版本：mysql -V		
+使用工具连接SQL
+推荐工具：Navicat、HeidiSQL...
+输入：
+主机：localhost
+端口：3306
+用户：root
+密码：MyPass@123456 (远程连接密码)
+
+MYSQL 2059问题的解决
+	加密规则问题
+	
+	mysql -uroot -ppassword #登录
+	use mysql; #选择数据库
+	# 远程连接请将'localhost'换成'%'即	ALTER USER 'root'@'%'
+
+	ALTER USER 'root'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER; #更改加密方式
+	ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; #更新用户密码
+	FLUSH PRIVILEGES; #刷新权限
+	
+忘记密码：
+	命令窗口：
+		net stop mysql
+		mysqld --console --skip-grant-tables --shared-memory 停止服务，跳过检查
+	新命令窗口
+		mysql -u root -p 回车，这时让你输入密码，不输入，直接回车
+		use mysql
+		update user set authentication_string='' where user='root';
+		quit
+	再开一个
+		net start mysql
+		mysql -u root -p 回车，不输入密码，回车
+		ALTER USER 'root'@'localhost' IDENTIFIED BY 'root2020';
+		
+navicat连接oracle
+	Oracle数据库时报ORA-12541:TNS:无监听程序。查看一下Oracle安装目录里的listener.ora文件里面的Host主机号是什么，
+		然后添加到navicat连接的那个主机，没有就那个tnsnames.ora的HOST和port
