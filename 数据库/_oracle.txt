@@ -1,5 +1,6 @@
 NVL(Expr1,Expr2)如果Expr1为NULL，返回Expr2的值，否则返回Expr1的值
 tns配置数据库：配置数据库的连接地址，配置好后，连接时无需完整的oracle地址，用字符串代替就行。定义网络服务的
+	
 oracle服务：
 	OracleDBConsoleorcl   (oracle的企业管理器服务)
 	OracleJobSchedulerORCL  (oracle的任务调度服务 定时器)
