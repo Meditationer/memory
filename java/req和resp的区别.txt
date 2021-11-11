@@ -1,0 +1,14 @@
+ServletConfig	String getInitParameter(String name)获取全局初始化参数
+作为域对象	setAttribute	getAttribute
+	
+response：响应对象
+	void addCookie(Cookie cookie);服务器向客户端增加cookie对象
+	void sendRedirect(String location)throws IOException:页面跳转的一种方法重定向方法。
+	void setContetType(String type):设置服务器端响应的编码（设置服务器端的contentType类型）
+request：
+	存储请求数据，修改配对请求数据setAttribute(一次请求,一个对象)
+
+重定向：resp. sendRedirect("/r/img");//重定向
+             resp. setHeader("Location","/r/img");
+             resp. setstatus (302);
+转发   ： context.getRequestDispatcher("/gp").forward(req,resp);

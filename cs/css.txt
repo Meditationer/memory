@@ -1,0 +1,31 @@
+&nbsp;全角 &ensp;半角
+表单属性：	
+	type="text"
+	class="form-control"
+	id="four"
+	name="SEGMENT1"
+	value="${SEGMENT1}"
+	for="four"
+	confirm="confirm"
+	onsubmit="return x();"
+	method="get"
+	action=""
+	autocomplete="off"		不显示文本框历史记录
+html结构：
+	<style></style>
+	<script></script>
+css属性：
+使用：
+属性：
+	color: red/#495057;		字体颜色
+	display:inline; 		生成行内框
+	
+select * FROM (select ROWNUM rn,cmd.ERROR_TYPE,cmd.CREATE_DATE,cmd.PROCESS_DATE,cmd.NO,cmd.ERROR_COUNT,cmd.ERROR_MESSAGE,cmd.STATUS,cmd.SEGMENT1,cmd.WIP_ENTITY_NAME
+	 from cux_mes_data_error_v cmd 
+	where 1=1 and cmd.CREATION_DATE >='2021-01-05' and cmd.CREATION_DATE <='2021-11-30') rs 
+WHERE  rs.rn >0 and rs.rn <= 15
+
+select * FROM (select ROWNUM rn,cmd.ERROR_TYPE,cmd.CREATE_DATE,cmd.PROCESS_DATE,cmd.NO,cmd.ERROR_COUNT,cmd.ERROR_MESSAGE,cmd.STATUS,cmd.SEGMENT1,cmd.WIP_ENTITY_NAME 
+	from cux_mes_data_error_v cmd 
+	where 1=1 and cmd.CREATION_DATE >='2021-11-01' and cmd.CREATION_DATE <='2021-11-15'
+WHERE  rs.rn >0 and rs.rn <= 14

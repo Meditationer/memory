@@ -1,0 +1,8 @@
+IDEA中的Rename和Rename File使用详解
+Rename对话框：
+	Search in comments and strings：在注释和字符串中搜索这个输入的名称
+	Search for text occurrences：搜索出现的文本。
+	Rename variables：重命名变量。
+	Rename inheritors：重命名继承者。
+	Rename tests：重命名测试类。
+如果改类目全部不用选，太他妈麻烦还容易搞错，自己搞还不如查找引用

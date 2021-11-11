@@ -23,3 +23,5 @@ Group Id 和 Artifact Id统称为坐标。如果项目打成jar包使用。是�
 groupId 项目名称或者其它，比如：org.apache
 ArtifactID： 项目的跟目录实际名称
 version ：构建的版本
+
+lib目录下jar包右击，Add As Library；选择Artifacts，会提示警告，点击下方Fix，完成。

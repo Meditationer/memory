@@ -1,1 +1,0 @@
-plsql developer中preferences是在菜单栏的工具，中文版对应的是"首选项"

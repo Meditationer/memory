@@ -1,0 +1,27 @@
+rowid：创建的时候生成的，而且是不变，指向硬件上的存储位置。
+rownum：伪列，表示行号，查询的记录是在第几行用来分页。从查询返回的行的编号，按照记录插入时的顺序给记录排的号
+
+SELECT * FROM 
+	(SELECT rs.*, ROWNUM as rn FROM cux_items_YD_v WHERE 1=1 WHERE ROWNUM <= end ) 
+	WHERE rn> st;
+
+SELECT * FROM 
+	(SELECT rs.*, ROWNUM  rn FROM cux_items_YD_v WHERE 1=1  ) 
+	WHERE rn<= end and rn> st;
+
+SELECT * FROM 
+	(SELECT ROWNUM rn,id FROM (SELECT id FROM T_USER)
+	WHERE ROWNUM<=20) t2 WHERE T2.rn >=10;
+SELECT b.object_id,b.object_name FROM
+    (
+    SELECT a.object_id,a.object_name,ROWNUM RN
+    FROM sta01 a
+    )b
+    WHERE RN BETWEEN 10 AND 20;
+
+都一样，先出结果再用rownum, 进行判断。
+【注】
+where 条件判断, 满足条件后才能生成rownum, 所以导致 rownum 无法进行大于(>)和大于等于(>=)
+1. where rownum>1 不能抓取到记录。
+2. where rownum between 2 and 10 也不能抓取到记录。
+3. rownum都是从1开始

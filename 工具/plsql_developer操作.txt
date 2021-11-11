@@ -1,0 +1,23 @@
+plsql developer中preferences是在菜单栏的工具，中文版对应的是"首选项"（在配置中选择首选项）可以配置连接
+
+小钥匙：登录，切欢用户
+绿色开始--执行（execute）
+小闪电--显示正在执行
+
+编写sql并执行：新建--》sql窗口	new sql windows    白框sql选择点击 菜单栏执行
+	
+查看表结构		ctrl + 鼠标选中表名
+注释			编辑 画笔图标旁边的书本图标	或者	右键 selection comment
+
+对于添加修改删除界面操作 <图表界面,查询结果区>
+	修改		select语句后面加 for update ，修改-》打勾-》解锁-》菜单栏下载图标commit，或者上传图标恢复。
+	添加		解锁-》添加	
+	删除		解锁-》删除
+	导出		右键 copy to excel
+	导入		直接excel复制(excel多加一列)，粘贴到查询结果区
+
+存储过程的新建，保存，测试 - packages 右键new，右边自动创建包和包体 - name包名，purose意义 - 用途 F8执行并自动保存
+	测试		在包中找到存储过程，右键选择 Edit spec & body进入包后，右键test
+			点击左上角的各种按键开始执行
+			function内的内容右击，勾选add debug information可以在调试过程中查看变量的值
+	select语句for update 未commit（断网就锁表） 退出时默认 rollback回滚防止数据出错

@@ -1,6 +1,17 @@
 Java web开发时看不到main(),因为tomcat就是一个java程序，有main()它主要加载tomcat自己的配置和你web.xml里面配置的内容
+web服务器tomcat支持：jsp，Servlet，Struts，Hibernate等；IIS是微软Windows自带的，支持ASP。Jetty，Nginx，apache也是web服务器
+web服务器作用监听请求，接受，处理请求，发送静态页面。而jsp，ASP，PHP等动态内容通过接口交由其它程序处理(应用服务器)
+web框架是处理web服务器收到的请求，并生成HTML内容，web服务器是接受请求。
+Servlet容器也叫做Servlet引擎，提供网络服务
+
+form表单数据,封装请求
+	I
+ 监听TCP端口，接受TCP连接。将数据包封装成HttpServletResponse，根据配置（web.xml）找到负责处理这个请求的调用链。
+tomcat解析出请求的method、URI和协议版本。根据 servlet-mapping 的URL的映射，找出处理请求的servlet
 
 三大组件：Servlet,Filter,Listener。
+
+数据库连接，路由配置
 	
 应用：
 	当启动一个WEB项目时，容器首先会读取项目web.xml配置文件里的配置。
