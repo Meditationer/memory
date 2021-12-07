@@ -4,8 +4,8 @@ ORM框架：框架采用元数据描述对象与关系映射的细节，元数�
 	java  学习路线;Spring Boot，Spring Cloud，Spring Cloud Data Flow
 SpringMVC：MVC轻量级Web框架。构建于 Servlet API 之上，使用的是同步阻塞式 I/O 模型。一个请求一个线程
 	webflux:响应式编程,以 Reactor 库为基础, 基于异步和事件驱动,适合应用在 IO 密集型的服务中，比如微服务网关
-Spring：相当于一个引擎，基于ioc和aop衍生了许多产品
-Spring Boot：基于Spring4的条件注册的快速开发整合包。只是承载者，如果搞web等同于spring mvc+servlet容器(tomcat)。也可以搞springclud
+Spring：服务器开发，相当于一个引擎，基于ioc和aop衍生了许多产品
+Spring Boot：服务器开发，基于Spring4的条件注册的快速开发整合包。只是承载者，如果搞web等同于spring mvc+servlet容器(tomcat)。也可以搞springclud
 		相当于各个功能的驱动
 Spring Cloud ：是一系列框架的有序集合，是目前最火热的微服务框架首选，
 ssm：Spring 、Spring MVC、Mybatis(持久层)

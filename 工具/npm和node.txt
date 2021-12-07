@@ -1,0 +1,18 @@
+npm:世界上最大的软件注册中心,使用 npm 来共享和借用包。如果包比作软件，npm就是软件管理
+	通过package.json 运行npm install ，npm就会下载代码。跟java的maven一样，maven方便托管java包
+	github要一个一个找，npm通过配置，可以一起下载多个前端包
+	
+通过nvm这样的 Node 版本管理器来安装 Node.js 和 npm	不建议使用 Node 安装程序
+	安装最新的npm	 命令行npm install -g npm
+	node.js 和 npm，查看是否安装成功	node -v 	npm -v
+
+对于使用package.json下载包。
+	package.json文件创建，在所在的目录下  npm init创建文件 npm init --yes 可以跳过所有的问题
+		npm install会自动将package.json中的模块安装到node-modules文件夹下。
+		npm install --dependencies 安装（运行依赖）文件
+			"dependencies": {"":"","":""}
+	"publishConfig": {    "registry": "http://127.0.0.1:4873"  }	表示发布节点。main作为入口节点
+	npm config set @mylib:registry=http://127.0.0.1:4873	包名为@mylib开头的包时全部从http://127.0.0.1:4873这个地址加载。
+	
+node.js内置了npm，作为包管理器
+	node.js一种javascript的运行环境，能够使得javascript脱离浏览器运行。
