@@ -42,7 +42,8 @@ MYSQL 2059问题的解决
 	再开一个
 		net start mysql
 		mysql -u root -p 回车，不输入密码，回车
-		ALTER USER 'root'@'localhost' IDENTIFIED BY 'root2020';
+		ALTER USER 'root'@'localhost' IDENTIFIED BY '更改的密码';
+	安装MySQL的路径下data文件。然后用记事本打开以.err为后缀的文件。搜索password 那一行
 		
 navicat连接oracle
 	Oracle数据库时报ORA-12541:TNS:无监听程序。查看一下Oracle安装目录里的listener.ora文件里面的Host主机号是什么，
