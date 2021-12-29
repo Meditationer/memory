@@ -1,0 +1,6 @@
+cmd
+netstat -ano			查看端口
+
+netstat -ano |findstr ""  		特定端口号
+tasklist |findstr ""			根据进程id查找到对应的程序		listening 后面那个数字就是id
+taskkill /f /t /im ""			根据进程id或者进程名称杀掉

@@ -1,0 +1,8 @@
+workorder和workorderid  表达的是一样的。
+
+p.workorder.Code。引用多个这个。
+
+别的表中字段，比如工单表中WoNo（只有显示）  ，只有get。这样赋值
+	model.SetProperty(TaskReportViewModel.PartProperty, task.WorkOrder.Part?.PartName);
+
+单独的字段可以改的，get，set  用等号赋值。
